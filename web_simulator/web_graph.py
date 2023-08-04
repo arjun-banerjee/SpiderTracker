@@ -5,18 +5,7 @@ from typing import Callable, List, Tuple, Union
 import pandas as pd
 import numpy as np
 
-
-class Point3D:
-    def __init__(self, x: float, y: float, z: float) -> None:
-        self.x = x
-        self.y = y
-        self.z = z
-
-    def dist(self, other: Point3D) -> float:
-        return math.sqrt((self.x - other.x) ** 2 + (self.y - other.y) ** 2 + (self.z - other.z) ** 2)
-
-    def __repr__(self) -> str:
-        return f"Point3D({self.x},{self.y},{self.z})"
+from .point import Point3D
 
 
 def sample_segment(p1: Point3D, p2: Point3D, threshold_min: float = 1.0, threshold_max: Union[float, np.infty] = np.infty):
@@ -85,3 +74,4 @@ def graph_to_df(points: List[Point3D], edges: List[Tuple[int, int]]) -> pd.DataF
         rows.append([np.nan, np.nan, np.nan])
     df = pd.DataFrame(rows, columns=["x", "y", "z"])
     return df
+
